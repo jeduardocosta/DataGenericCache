@@ -75,7 +75,7 @@ namespace Data.Generic.Cache.Providers.Factories
                     }
                     else
                     {
-                        if (!cacheProvider.IsValid())
+                        if (!cacheProvider.IsWorking())
                             continue;
 
                         var activeProviderCacheInMinutes = _providerSettingsConfig.GetActiveProviderCacheInMinutes();

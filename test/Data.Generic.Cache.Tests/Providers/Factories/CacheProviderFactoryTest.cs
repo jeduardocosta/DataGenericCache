@@ -37,8 +37,8 @@ namespace Data.Generic.Cache.Tests.Providers.Factories
             _cacheProvider = new Mock<ICacheProvider>();
             _redisCacheProvider = new Mock<ICacheProvider>();
 
-            _cacheProvider.Setup(it => it.IsValid()).Returns(true);
-            _redisCacheProvider.Setup(it => it.IsValid()).Returns(true);
+            _cacheProvider.Setup(it => it.IsWorking()).Returns(true);
+            _redisCacheProvider.Setup(it => it.IsWorking()).Returns(true);
 
             _mockProviderSettingsConfig
                 .Setup(it => it.GetProviders())
@@ -103,7 +103,7 @@ namespace Data.Generic.Cache.Tests.Providers.Factories
 
             _cacheProviderFactory.Create();
 
-            _cacheProvider.Verify(it => it.IsValid(), Times.Once);
+            _cacheProvider.Verify(it => it.IsWorking(), Times.Once);
         }
 
         [Test]
@@ -145,12 +145,12 @@ namespace Data.Generic.Cache.Tests.Providers.Factories
         [Test]
         public void GetRedisCacheProvider_WhenLocalMemoryCacheProviderThrownAnException_InCacheProviderFactory()
         {
-            _cacheProvider.Setup(it => it.IsValid()).Returns(false);
+            _cacheProvider.Setup(it => it.IsWorking()).Returns(false);
 
             _cacheProviderFactory.Create();
 
-            _cacheProvider.Verify(it => it.IsValid(), Times.Once);
-            _redisCacheProvider.Verify(it => it.IsValid(), Times.Once);
+            _cacheProvider.Verify(it => it.IsWorking(), Times.Once);
+            _redisCacheProvider.Verify(it => it.IsWorking(), Times.Once);
         }
 
         private IEnumerable<ProviderSettings> GivenAProviderSettings()

@@ -15,6 +15,6 @@ namespace Data.Generic.Cache.Providers
 
         void SetupConfiguration(ServerSettings serverSettings);
 
-        bool IsValid();
+        bool IsWorking();
     }
 }

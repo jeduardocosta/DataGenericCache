@@ -105,21 +105,21 @@ namespace Data.Generic.Cache.Providers
             return string.Format("{0}:{1}", serverSettings.Address, serverSettings.Port);
         }
 
-        public bool IsValid()
+        public bool IsWorking()
         {
             const string sampleContentValue = "samplecontent-isworking";
             var sampleContentKey = Guid.NewGuid().ToString();
-            var isValid = false;
+            var isWorking = false;
 
             try
             {
                 Add(sampleContentKey, sampleContentValue, TimeSpan.FromSeconds(5));
-                isValid = sampleContentValue == Retrieve<string>(sampleContentKey);
+                isWorking = sampleContentValue == Retrieve<string>(sampleContentKey);
             }
             catch (Exception)
             { }
 
-            return isValid;
+            return isWorking;
         }
     }
 }

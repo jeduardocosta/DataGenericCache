@@ -112,5 +112,13 @@ namespace Data.Generic.Cache.Tests.Providers
         {
             new RedisCacheProvider().SetupConfiguration(new ServerSettings("localhost", 6379, string.Empty));
         }
+
+        [Test]
+        public void Should_CheckIfProviderIsWorking_InRedisCacheProvide()
+        {
+            _redisCacheProvider.IsWorking()
+                .Should()
+                .BeTrue();
+        }
     }
 }
