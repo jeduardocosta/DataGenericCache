@@ -10,6 +10,7 @@ Configuration
 ----------
 Use custom config section named "dataGenericCacheSection" in configuration file.
 
+```xml
 <dataGenericCacheSection>
    <providers>
       <provider type="redis" server="remote-redis" port="6379" password="remote-redis-password" />
