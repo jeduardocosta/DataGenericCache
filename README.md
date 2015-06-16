@@ -1,6 +1,7 @@
 # data-generic-cache
 
-[![Build status](https://ci.appveyor.com/api/projects/status/c806rq2m850k5j1v?svg=true)](https://ci.appveyor.com/project/jeduardocosta/data-generic-cache)
+[![Build status](https://ci.appveyor.com/api/projects/status/c806rq2m850k5j1v?svg=true)](https://ci.appveyor.com/project/jeduardocosta/data-generic-cache) [![Coverage Status](https://coveralls.io/repos/jeduardocosta/data-generic-cache/badge.svg)](https://coveralls.io/r/jeduardocosta/data-generic-cache)
+
 
 A simple library to cache data using custom providers.
 
