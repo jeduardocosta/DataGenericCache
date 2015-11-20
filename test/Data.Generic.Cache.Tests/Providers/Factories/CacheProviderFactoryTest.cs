@@ -32,17 +32,13 @@ namespace Data.Generic.Cache.Tests.Providers.Factories
             _mockProviderSettingsConfig = new Mock<IProviderSettingsConfig>();
             _mockCacheProviderInstanceFactory = new Mock<ICacheProviderInstanceFactory>();
 
-            _providerSettings = GivenAProviderSettings();
+            _providerSettings = GivenProviderSettings();
 
             _cacheProvider = new Mock<ICacheProvider>();
             _redisCacheProvider = new Mock<ICacheProvider>();
 
-            _cacheProvider.Setup(it => it.IsWorking()).Returns(true);
-            _redisCacheProvider.Setup(it => it.IsWorking()).Returns(true);
-
-            _mockProviderSettingsConfig
-                .Setup(it => it.GetProviders())
-                .Returns(_providerSettings);
+            _redisCacheProvider.Setup(e => e.Retrieve<string>(It.IsAny<string>())).Returns("isworking");
+            _mockProviderSettingsConfig.Setup(it => it.GetProviders()).Returns(_providerSettings);
 
             SetUpMockCacheProviderInstanceFactory();
 
@@ -75,7 +71,7 @@ namespace Data.Generic.Cache.Tests.Providers.Factories
         {
             _cacheProviderFactory.Create();
 
-            _mockLocalMemoryProvider.Verify(it => it.Exists(It.IsAny<string>()), Times.Once);
+            _mockLocalMemoryProvider.Verify(it => it.Exists(It.IsAny<string>()), Times.AtLeastOnce);
         }
 
         [Test]
@@ -83,7 +79,7 @@ namespace Data.Generic.Cache.Tests.Providers.Factories
         {
             _cacheProviderFactory.Create();
 
-            _mockLocalMemoryProvider.Verify(it => it.Exists(ActiveCacheKeyName), Times.Once);
+            _mockLocalMemoryProvider.Verify(it => it.Exists(ActiveCacheKeyName), Times.AtLeastOnce);
         }
 
         [Test]
@@ -94,16 +90,6 @@ namespace Data.Generic.Cache.Tests.Providers.Factories
             _cacheProviderFactory.Create();
 
             _mockLocalMemoryProvider.Verify(it => it.Retrieve<ICacheProvider>(ActiveCacheKeyName), Times.Once);
-        }
-
-        [Test]
-        public void ValidateCacheProvider_WhenCacheProviderThatNotExistsInLocalMemory_InCacheProviderFactory()
-        {
-            SetupExistsMethodInLocalMemoryProviderWith(false);
-
-            _cacheProviderFactory.Create();
-
-            _cacheProvider.Verify(it => it.IsWorking(), Times.Once);
         }
 
         [Test]
@@ -142,18 +128,7 @@ namespace Data.Generic.Cache.Tests.Providers.Factories
             _mockLocalMemoryProvider.Verify(it => it.Add(ActiveCacheKeyName, It.IsAny<ICacheProvider>(), expectedTimeSpan), Times.Once);
         }
 
-        [Test]
-        public void GetRedisCacheProvider_WhenLocalMemoryCacheProviderThrownAnException_InCacheProviderFactory()
-        {
-            _cacheProvider.Setup(it => it.IsWorking()).Returns(false);
-
-            _cacheProviderFactory.Create();
-
-            _cacheProvider.Verify(it => it.IsWorking(), Times.Once);
-            _redisCacheProvider.Verify(it => it.IsWorking(), Times.Once);
-        }
-
-        private IEnumerable<ProviderSettings> GivenAProviderSettings()
+        private IEnumerable<ProviderSettings> GivenProviderSettings()
         {
             return new List<ProviderSettings>
             {

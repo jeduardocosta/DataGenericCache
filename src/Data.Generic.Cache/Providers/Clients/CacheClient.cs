@@ -86,10 +86,5 @@ namespace Data.Generic.Cache.Providers.Clients
                 return true;
             });
         }
-
-        public bool IsWorking()
-        {
-            return _cacheProvider.IsWorking();
-        }
     }
 }

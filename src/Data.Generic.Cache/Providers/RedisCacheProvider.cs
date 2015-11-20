@@ -106,22 +106,5 @@ namespace Data.Generic.Cache.Providers
         {
             return $"{serverSettings.Address}:{serverSettings.Port}";
         }
-
-        public bool IsWorking()
-        {
-            const string sampleContentValue = "samplecontent-isworking";
-            var sampleContentKey = Guid.NewGuid().ToString();
-            var isWorking = false;
-
-            try
-            {
-                Add(sampleContentKey, sampleContentValue, TimeSpan.FromSeconds(5));
-                isWorking = sampleContentValue == Retrieve<string>(sampleContentKey);
-            }
-            catch (Exception)
-            { }
-
-            return isWorking;
-        }
     }
 }

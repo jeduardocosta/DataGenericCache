@@ -68,7 +68,7 @@ namespace Data.Generic.Cache.Providers.Factories
                     }
                     else
                     {
-                        if (!cacheProvider.IsWorking())
+                        if (!IsWorking(cacheProvider))
                         { 
                             continue;
                         }
@@ -86,6 +86,25 @@ namespace Data.Generic.Cache.Providers.Factories
             }
 
             throw new Exception("failed to get cache provider.");
+        }
+
+
+        private static bool IsWorking(ICacheProvider cacheProvider)
+        {
+            const string value = "isworking";
+            var key = Guid.NewGuid().ToString();
+            var isWorking = false;
+
+            try
+            {
+                cacheProvider.Add(key, value, TimeSpan.FromSeconds(2));
+                isWorking = value == cacheProvider.Retrieve<string>(key);
+                cacheProvider.Remove(key);
+            }
+            catch (Exception)
+            { }
+
+            return isWorking;
         }
     }
 }

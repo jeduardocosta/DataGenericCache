@@ -47,7 +47,11 @@ namespace Data.Generic.Cache.Providers
         public void Remove(string key)
         {
             var filePath = CreateFilePath(key);
+            var expirationKey = CreateFileExpiration(key);
+            var expirationFilePath = CreateFilePath(expirationKey);
+
             _ioAdapter.Remove(filePath);
+            _ioAdapter.Remove(expirationFilePath);
         }
 
         public bool Exists(string key)
@@ -85,24 +89,6 @@ namespace Data.Generic.Cache.Providers
             }
 
             return cachedObject;
-        }
-
-        public bool IsWorking()
-        {
-            const string sampleContentValue = "samplecontent-isworking";
-            var sampleContentKey = Guid.NewGuid().ToString();
-            var isWorking = false;
-
-            try
-            {
-                Add(sampleContentKey, sampleContentValue, TimeSpan.FromSeconds(5));
-                isWorking = sampleContentValue == Retrieve<string>(sampleContentKey);
-                Remove(sampleContentKey);
-            }
-            catch (Exception)
-            { }
-
-            return isWorking;
         }
 
         internal string CreateFilePath(string key)

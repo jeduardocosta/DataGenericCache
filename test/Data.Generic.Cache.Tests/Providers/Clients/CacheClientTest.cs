@@ -101,14 +101,6 @@ namespace Data.Generic.Cache.Tests.Providers.Clients
         }
 
         [Test]
-        public void Should_CheckIfProviderIsWorking_InCacheClient()
-        {
-            _cacheClient.IsWorking();
-
-            _mockCacheProvider.Verify(it => it.IsWorking(), Times.Once);
-        }
-
-        [Test]
         public void WhenProcessRequest_WithCacheClient_ShouldNotThrowAnException_WhenAnErrorOccurred()
         {
             _mockCacheProvider

@@ -80,7 +80,17 @@ namespace Data.Generic.Cache.Tests.Providers
         }
 
         [Test]
-        public void Remove_GivenKey_ShouldCallRemoveOnIoAdapterWithExpectedParameter()
+        public void Remove_GivenKey_ShouldCallRemoveOnIoAdapter()
+        {
+            var expectedPath = BasePath.Combine($"{_key}-expiration");
+
+            _localStorageCacheProvider.Remove(_key);
+
+            _mockIoAdapter.Verify(e => e.Remove(expectedPath), Times.Once);
+        }
+
+        [Test]
+        public void Remove_GivenKey_ShouldCallRemoveExpirationFileOnIoAdapter()
         {
             _localStorageCacheProvider.Remove(_key);
 

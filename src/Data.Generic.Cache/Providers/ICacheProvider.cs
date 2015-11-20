@@ -14,7 +14,5 @@ namespace Data.Generic.Cache.Providers
         T RetrieveOrElse<T>(string key, TimeSpan expiration, Func < T> retrievalDelegate);
 
         void SetupConfiguration(ServerSettings serverSettings);
-
-        bool IsWorking();
     }
 }

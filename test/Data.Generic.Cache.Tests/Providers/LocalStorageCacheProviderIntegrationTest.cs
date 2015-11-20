@@ -76,15 +76,6 @@ namespace Data.Generic.Cache.Tests.Providers
         }
         
         [Test]
-        public void IsWorking_GivenLocalStorageCacheProvider_ShouldReturnTrue()
-        {
-            _localStorageCacheProvider
-                .IsWorking()
-                .Should()
-                .BeTrue();
-        }
-        
-        [Test]
         public void CreateFilePath_GivenKey_ShouldReturnExpectedValue()
         {
             _localStorageCacheProvider

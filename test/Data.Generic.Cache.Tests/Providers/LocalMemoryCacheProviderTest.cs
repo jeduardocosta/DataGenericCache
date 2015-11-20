@@ -107,14 +107,5 @@ namespace Data.Generic.Cache.Tests.Providers
         {
             _localMemoryCacheProvider.SetupConfiguration(It.IsAny<ServerSettings>());
         }
-
-        [Test]
-        public void Should_CheckIfProviderIsWorking_InLocalMemoryCacher()
-        {
-            _localMemoryCacheProvider
-                .IsWorking()
-                .Should()
-                .BeTrue();
-        }
     }
 }
