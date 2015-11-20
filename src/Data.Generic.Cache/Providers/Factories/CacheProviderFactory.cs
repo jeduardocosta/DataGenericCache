@@ -8,15 +8,17 @@ namespace Data.Generic.Cache.Providers.Factories
 {
     internal class CacheProviderFactory : ICacheProviderFactory
     {
+        private const string ActiveCacheProviderKeyName = "CacheProviderFactory.GetActiveProviderCache.ActiveCache";
+
         private readonly ICacheProvider _localMemoryProvider;
         private readonly IProviderSettingsConfig _providerSettingsConfig;
         private readonly ICacheProviderInstanceFactory _cacheProviderInstanceFactory;
 
         public CacheProviderFactory()
+            : this(new LocalMemoryCacheProvider(), 
+                  new ProviderSettingsConfig(new ConfigurationAdapter()), 
+                  new CacheProviderInstanceFactory())
         {
-            _localMemoryProvider = new LocalMemoryCacheProvider();
-            _providerSettingsConfig = new ProviderSettingsConfig(new ConfigurationAdapter());
-            _cacheProviderInstanceFactory = new CacheProviderInstanceFactory();
         }
 
         public CacheProviderFactory(ICacheProvider localMemoryProvider, 
@@ -30,9 +32,15 @@ namespace Data.Generic.Cache.Providers.Factories
         
         public ICacheProvider Create()
         {
-            var providerSettings = _providerSettingsConfig.GetProviders();
-            var cacheProviders = providerSettings.Select(it => _cacheProviderInstanceFactory.Create(it.Type, it.ServerSettings)).ToList();
-            var activeCacheProvider = GetActiveCache(cacheProviders);
+            var activeCacheProvider = GetActiveCacheProvider();
+
+            if (activeCacheProvider == null)
+            {
+                var providerSettings = _providerSettingsConfig.GetProviders();
+                var cacheProviders = providerSettings.Select(it => _cacheProviderInstanceFactory.Create(it.Type, it.ServerSettings)).ToList();
+                activeCacheProvider = GetCacheProvider(cacheProviders);
+            }
+
             return activeCacheProvider;
         }
 
@@ -52,34 +60,33 @@ namespace Data.Generic.Cache.Providers.Factories
             return totalProviders;
         }
 
-        private ICacheProvider GetActiveCache(IEnumerable<ICacheProvider> cacheProviders)
+        private ICacheProvider GetActiveCacheProvider()
         {
-            const string testContentKeyName = "CacheProviderFactory.GetActiveCache.ActiveCache";
+            ICacheProvider activeCacheProvider = null;
 
+            if (_localMemoryProvider.Exists(ActiveCacheProviderKeyName))
+            {
+                activeCacheProvider = _localMemoryProvider.Retrieve<ICacheProvider>(ActiveCacheProviderKeyName);
+            }
+
+            return activeCacheProvider;
+        }
+
+        private ICacheProvider GetCacheProvider(IEnumerable<ICacheProvider> cacheProviders)
+        {
             foreach (var cacheProvider in cacheProviders)
             {
                 try
                 {
-                    ICacheProvider activeCacheProvider;
-
-                    if (_localMemoryProvider.Exists(testContentKeyName))
+                    if (!IsWorking(cacheProvider))
                     {
-                        activeCacheProvider = _localMemoryProvider.Retrieve<ICacheProvider>(testContentKeyName);
-                    }
-                    else
-                    {
-                        if (!IsWorking(cacheProvider))
-                        { 
-                            continue;
-                        }
-
-                        var activeProviderCacheInMinutes = _providerSettingsConfig.GetActiveProviderCacheInMinutes();
-                        _localMemoryProvider.Add(testContentKeyName, cacheProvider, TimeSpan.FromMinutes(activeProviderCacheInMinutes));
-
-                        activeCacheProvider = cacheProvider;
+                        continue;
                     }
 
-                    return activeCacheProvider;
+                    var activeProviderCacheInMinutes = _providerSettingsConfig.GetActiveProviderCacheInMinutes();
+                    _localMemoryProvider.Add(ActiveCacheProviderKeyName, cacheProvider, TimeSpan.FromMinutes(activeProviderCacheInMinutes));
+
+                    return cacheProvider;
                 }
                 catch (Exception)
                 { }
@@ -91,9 +98,9 @@ namespace Data.Generic.Cache.Providers.Factories
 
         private static bool IsWorking(ICacheProvider cacheProvider)
         {
-            const string value = "isworking";
+            const string value = "isWorking";
             var key = Guid.NewGuid().ToString();
-            var isWorking = false;
+            bool isWorking;
 
             try
             {
@@ -102,7 +109,9 @@ namespace Data.Generic.Cache.Providers.Factories
                 cacheProvider.Remove(key);
             }
             catch (Exception)
-            { }
+            {
+                isWorking = false;
+            }
 
             return isWorking;
         }
