@@ -13,11 +13,11 @@ namespace Data.Generic.Cache.Settings.ConfigSections
             set { this["type"] = value; }
         }
 
-        [ConfigurationProperty("server")]
-        public string Server
+        [ConfigurationProperty("address")]
+        public string Address
         {
-            get { return this["server"] as string; }
-            set { this["server"] = value; }
+            get { return this["address"] as string; }
+            set { this["address"] = value; }
         }
 
         [ConfigurationProperty("port")]
@@ -34,9 +34,6 @@ namespace Data.Generic.Cache.Settings.ConfigSections
             set { this["password"] = value; }
         }
 
-        public string Id
-        {
-            get { return string.Format("{0}-{1}-{2}", Type, Server, Port); }
-        }
+        public string Id => $"{Type}-{Address}-{Port}";
     }
 }

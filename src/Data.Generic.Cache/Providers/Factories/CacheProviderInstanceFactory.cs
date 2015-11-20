@@ -10,7 +10,8 @@ namespace Data.Generic.Cache.Providers.Factories
             = new Dictionary<CacheProvider, Func<ICacheProvider>>
             {
                 {CacheProvider.Redis, () => new RedisCacheProvider()},
-                {CacheProvider.LocalMemory, () => new LocalMemoryCacheProvider()}
+                {CacheProvider.LocalMemory, () => new LocalMemoryCacheProvider()},
+                {CacheProvider.LocalStorage, () => new LocalStorageCacheProvider()}
             };
 
         public ICacheProvider Create(CacheProvider cacheProviderType, ServerSettings serverSettings)

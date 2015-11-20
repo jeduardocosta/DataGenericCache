@@ -58,7 +58,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapters\ConfigurationAdapter.cs" />
+    <Compile Include="Adapters\FileIoAdapter.cs" />
     <Compile Include="Adapters\IConfigurationAdapter.cs" />
+    <Compile Include="Adapters\IFileIoAdapter.cs" />
+    <Compile Include="Clock.cs" />
     <Compile Include="Parsers\IJsonParser.cs" />
     <Compile Include="Providers\Clients\CacheClient.cs" />
     <Compile Include="Exceptions\CacheProviderConnectionException.cs" />
@@ -73,6 +76,7 @@
     <Compile Include="Providers\ICacheProvider.cs" />
     <Compile Include="Parsers\JsonParser.cs" />
     <Compile Include="Providers\LocalMemoryCacheProvider.cs" />
+    <Compile Include="Providers\LocalStorageCacheProvider.cs" />
     <Compile Include="Providers\RedisCacheProvider.cs" />
     <Compile Include="Settings\CacheProvider.cs" />
     <Compile Include="Settings\ConfigSections\CacheSection.cs" />

@@ -1,4 +1,5 @@
-﻿using Data.Generic.Cache.Providers.Factories;
+﻿using Data.Generic.Cache.Providers;
+using Data.Generic.Cache.Providers.Factories;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -16,12 +17,12 @@ namespace Data.Generic.Cache.Tests.Providers.Factories
         }
 
         [Test]
-        public void Should_GetCacheProvider_InCacheProviderFactory()
+        public void Create_GivenAppSettings_ShouldReturnFirstSetProvider()
         {
             _cacheProviderFactory
                 .Create()
                 .Should()
-                .NotBeNull();
+                .BeOfType<RedisCacheProvider>();
         }
     }
 }

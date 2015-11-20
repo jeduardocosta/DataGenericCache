@@ -17,9 +17,10 @@ Use custom config section named "dataGenericCacheSection" in configuration file.
 ```xml
 <dataGenericCacheSection>
    <providers>
-      <provider type="redis" server="remote-redis" port="6379" password="remote-redis-password" />
-      <provider type="redis" server="local-redis" port="6379" />
+      <provider type="redis" address="remote-redis" port="6379" password="remote-redis-password" />
+      <provider type="redis" address="local-redis" port="6379" />
       <provider type="localmemory" />
+	  <provider type="localstorage" address="c:\\data" />
    </providers>
    <activeProviderCacheInMinutes value="60" />
 </dataGenericCacheSection>

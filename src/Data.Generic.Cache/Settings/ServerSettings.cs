@@ -2,13 +2,20 @@
 {
     public class ServerSettings
     {
-        public string Address { get; }
-        public int Port { get; }
-        public string Password { get; }
+        public string Address { get; set;  }
+        public int Port { get; set; }
+        public string Password { get; set;  }
 
-        public ServerSettings(string address, int port, string password)
+        public ServerSettings() { }
+
+        public ServerSettings(string address)
         {
             Address = address;
+        }
+
+        public ServerSettings(string address, int port, string password)
+            : this(address)
+        {
             Port = port;
             Password = password;
         }

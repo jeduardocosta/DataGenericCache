@@ -3,6 +3,7 @@
     public enum CacheProvider
     {
         Redis,
-        LocalMemory
+        LocalMemory,
+        LocalStorage
     }
 }

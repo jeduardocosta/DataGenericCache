@@ -88,6 +88,9 @@
     <Compile Include="Providers\Factories\CacheProviderInstanceFactoryTest.cs" />
     <Compile Include="Parsers\JsonParserTest.cs" />
     <Compile Include="Providers\LocalMemoryCacheProviderTest.cs" />
+    <Compile Include="Providers\LocalStorageCacheProviderIntegrationTest.cs" />
+    <Compile Include="Providers\LocalStorageCacheProviderTimeSpanIntegrationTest.cs" />
+    <Compile Include="Providers\LocalStorageCacheProviderUnitTest.cs" />
     <Compile Include="Providers\RedisCacheProviderTest.cs" />
     <Compile Include="Settings\ProviderSettingsConfigIntegrationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -34,5 +34,14 @@ namespace Data.Generic.Cache.Tests.Extensions
                 .Should()
                 .Be(CacheProvider.LocalMemory);
         }
+
+        [Test]
+        public void Combine_GivenBasePathAndValue_ShouldReturnExpectedValue()
+        {
+            "c:\\base"
+                .Combine("folder")
+                .Should()
+                .Be("c:\\base\\folder");
+        }
     }
 }

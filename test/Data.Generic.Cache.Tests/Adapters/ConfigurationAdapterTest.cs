@@ -21,23 +21,26 @@ namespace Data.Generic.Cache.Tests.Adapters
         {
             const string sampleContent = "sample";
 
-            _configurationAdapter.Get(sampleContent)
+            _configurationAdapter
+                .Get(sampleContent)
                 .Should()
                 .Be(sampleContent);
         }
 
         [Test]
-        public void Should_dataGenericCacheSection_FromConfigurationFile()
+        public void Should_ConvertDataGenericCacheSection_FromConfigurationFile()
         {
-            _configurationAdapter.GetSections<object>("dataGenericCacheSection")
+            _configurationAdapter
+                .GetSections<object>("dataGenericCacheSection")
                 .Should()
                 .NotBeNull();
         }
 
         [Test]
-        public void Should_dataGenericCacheSection_AndCastToEntryType_FromConfigurationFile()
+        public void Should_ConvertDataGenericCacheSection_AndCastToEntryType_FromConfigurationFile()
         {
-            _configurationAdapter.GetSections<CacheSection>("dataGenericCacheSection")
+            _configurationAdapter
+                .GetSections<CacheSection>("dataGenericCacheSection")
                 .Should()
                 .BeOfType<CacheSection>();
         }

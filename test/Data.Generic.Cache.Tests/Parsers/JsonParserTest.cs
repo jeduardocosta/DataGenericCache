@@ -21,7 +21,8 @@ namespace Data.Generic.Cache.Tests.Parsers
         [Test]
         public void ConvertObject_ToJson_UsingParser()
         {
-            _jsonParser.Parse(GivenAServerSettings())
+            _jsonParser
+                .Parse(GivenAServerSettings())
                 .Should()
                 .Be(JsonContent);
         }
@@ -29,9 +30,19 @@ namespace Data.Generic.Cache.Tests.Parsers
         [Test]
         public void ConvertJson_ToObject_UsingParser()
         {
-            _jsonParser.Parse<ServerSettings>(JsonContent)
+            _jsonParser
+                .Parse<ServerSettings>(JsonContent)
                 .Should()
                 .Be(GivenAServerSettings());
+        }
+
+        [Test]
+        public void Parse_GivenNullValue_ShouldReturnDefaultTypeValue()
+        {
+            _jsonParser
+                .Parse<string>(null)
+                .Should()
+                .Be(default(string));
         }
 
         private ServerSettings GivenAServerSettings()

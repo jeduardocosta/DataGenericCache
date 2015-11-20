@@ -34,7 +34,8 @@ namespace Data.Generic.Cache.Tests.Providers
         [Test]
         public void Should_RetrieveNull_WhenValueDoesntExist_InRedisCacheProvider()
         {
-            _redisCacheProvider.Retrieve<string>("ShouldRetrieveNullWhenValueDoesntExistKey")
+            _redisCacheProvider
+                .Retrieve<string>("ShouldRetrieveNullWhenValueDoesntExistKey")
                 .Should()
                 .BeNull();
         }
@@ -47,7 +48,8 @@ namespace Data.Generic.Cache.Tests.Providers
 
             _redisCacheProvider.Add(key, value, TimeSpan.FromSeconds(1));
 
-            _redisCacheProvider.Retrieve<string>(key)
+            _redisCacheProvider
+                .Retrieve<string>(key)
                 .Should()
                 .Be(value);
         }
@@ -60,7 +62,8 @@ namespace Data.Generic.Cache.Tests.Providers
 
             _redisCacheProvider.RetrieveOrElse(key, TimeSpan.FromSeconds(1), () => value);
 
-            _redisCacheProvider.Retrieve<string>(key)
+            _redisCacheProvider
+                .Retrieve<string>(key)
                 .Should()
                 .Be(value);
         }
@@ -75,7 +78,8 @@ namespace Data.Generic.Cache.Tests.Providers
 
             Thread.Sleep(5);
 
-            _redisCacheProvider.Retrieve<string>(key)
+            _redisCacheProvider
+                .Retrieve<string>(key)
                 .Should()
                 .BeNull();
         }
@@ -88,7 +92,8 @@ namespace Data.Generic.Cache.Tests.Providers
 
             _redisCacheProvider.Add(key, value, TimeSpan.FromSeconds(1));
 
-            _redisCacheProvider.Exists(key)
+            _redisCacheProvider
+                .Exists(key)
                 .Should()
                 .BeTrue();
 
@@ -104,7 +109,8 @@ namespace Data.Generic.Cache.Tests.Providers
             _redisCacheProvider.Add(key, value, TimeSpan.FromSeconds(1));
             _redisCacheProvider.Remove(key);
 
-            _redisCacheProvider.Exists(key)
+            _redisCacheProvider
+                .Exists(key)
                 .Should()
                 .BeFalse();
         }
@@ -112,13 +118,15 @@ namespace Data.Generic.Cache.Tests.Providers
         [Test]
         public void Should_SetupConfiguration_InRedisCacheProvider()
         {
-            new RedisCacheProvider().SetupConfiguration(new ServerSettings("localhost", 6379, string.Empty));
+            new RedisCacheProvider()
+                .SetupConfiguration(new ServerSettings("localhost", 6379, string.Empty));
         }
 
         [Test]
         public void Should_CheckIfProviderIsWorking_InRedisCacheProvide()
         {
-            _redisCacheProvider.IsWorking()
+            _redisCacheProvider
+                .IsWorking()
                 .Should()
                 .BeTrue();
         }

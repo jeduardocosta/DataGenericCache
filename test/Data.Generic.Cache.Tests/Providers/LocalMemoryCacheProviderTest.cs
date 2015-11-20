@@ -35,7 +35,8 @@ namespace Data.Generic.Cache.Tests.Providers
 
             _localMemoryCacheProvider.Add(key, value, TimeSpan.FromSeconds(1));
 
-            _localMemoryCacheProvider.Retrieve<string>(key)
+            _localMemoryCacheProvider
+                .Retrieve<string>(key)
                 .Should()
                 .Be(value);
         }
@@ -48,7 +49,8 @@ namespace Data.Generic.Cache.Tests.Providers
 
             _localMemoryCacheProvider.RetrieveOrElse(key, TimeSpan.FromSeconds(1), () => value);
 
-            _localMemoryCacheProvider.Retrieve<string>(key)
+            _localMemoryCacheProvider
+                .Retrieve<string>(key)
                 .Should()
                 .Be(value);
         }
@@ -63,7 +65,8 @@ namespace Data.Generic.Cache.Tests.Providers
 
             Thread.Sleep(5);
 
-            _localMemoryCacheProvider.Retrieve<string>(key)
+            _localMemoryCacheProvider
+                .Retrieve<string>(key)
                 .Should()
                 .BeNull();
         }
@@ -76,7 +79,8 @@ namespace Data.Generic.Cache.Tests.Providers
 
             _localMemoryCacheProvider.Add(key, value, TimeSpan.FromSeconds(1));
 
-            _localMemoryCacheProvider.Exists(key)
+            _localMemoryCacheProvider
+                .Exists(key)
                 .Should()
                 .BeTrue();
 
@@ -92,7 +96,8 @@ namespace Data.Generic.Cache.Tests.Providers
             _localMemoryCacheProvider.Add(key, value, TimeSpan.FromSeconds(1));
             _localMemoryCacheProvider.Remove(key);
 
-            _localMemoryCacheProvider.Exists(key)
+            _localMemoryCacheProvider
+                .Exists(key)
                 .Should()
                 .BeFalse();
         }
@@ -106,7 +111,8 @@ namespace Data.Generic.Cache.Tests.Providers
         [Test]
         public void Should_CheckIfProviderIsWorking_InLocalMemoryCacher()
         {
-            _localMemoryCacheProvider.IsWorking()
+            _localMemoryCacheProvider
+                .IsWorking()
                 .Should()
                 .BeTrue();
         }

@@ -29,7 +29,7 @@ namespace Data.Generic.Cache.Settings
             
             foreach (CacheSectionProviderElement provider in dataGenericCacheSection.Providers)
             { 
-                providerSettings.Add(new ProviderSettings(new ServerSettings(provider.Server, provider.Port, provider.Password), provider.Type));
+                providerSettings.Add(new ProviderSettings(new ServerSettings(provider.Address, provider.Port, provider.Password), provider.Type));
             }
 
             return providerSettings;

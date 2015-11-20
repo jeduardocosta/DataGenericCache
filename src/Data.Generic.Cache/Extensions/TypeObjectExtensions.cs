@@ -1,20 +1,24 @@
 ﻿using Data.Generic.Cache.Parsers;
-using StackExchange.Redis;
 
 namespace Data.Generic.Cache.Extensions
 {
     public static class TypeObjectExtensions
     {
+        private static readonly JsonParser JsonParser = new JsonParser();
+
         public static string ToJson(this object obj)
         {
-            var jsonParser = new JsonParser();
-            return jsonParser.Parse(obj);
+            return JsonParser.Parse(obj);
         }
 
-        public static T FromJson<T>(this RedisValue obj)
+        public static T FromJson<T>(this string obj)
         {
-            var jsonParser = new JsonParser();
-            return jsonParser.Parse<T>(obj);
+            return JsonParser.Parse<T>(obj);
+        }
+
+        public static T AsType<T>(this object obj)
+        {
+            return (T)obj;
         }
     }
 }

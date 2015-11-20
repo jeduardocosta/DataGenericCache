@@ -16,7 +16,7 @@ namespace Data.Generic.Cache.Tests.Providers.Factories
         public void Setup()
         {
             _cacheProviderInstanceFactory = new CacheProviderInstanceFactory();
-            _serverSettings = GivenAServerSettings();
+            _serverSettings = new ServerSettings("", 0, "");
         }
 
         [Test]
@@ -35,9 +35,12 @@ namespace Data.Generic.Cache.Tests.Providers.Factories
                 .BeOfType<LocalMemoryCacheProvider>();
         }
 
-        private ServerSettings GivenAServerSettings()
+        [Test]
+        public void Should_GetLocalStorageProviderInstance_ByProviderType()
         {
-            return new ServerSettings("", 0, "");
+            _cacheProviderInstanceFactory.Create(CacheProvider.LocalStorage, _serverSettings)
+                .Should()
+                .BeOfType<LocalStorageCacheProvider>();
         }
     }
 }

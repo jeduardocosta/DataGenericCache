@@ -73,10 +73,13 @@ namespace Data.Generic.Cache.Providers
             var obtained = RedisDatabase.StringGet(key);
 
             if (obtained.IsNull)
+            { 
                 return default(T);
+            }
 
             return RedisDatabase
                 .StringGet(key)
+                .ToString()
                 .FromJson<T>();
         }
 

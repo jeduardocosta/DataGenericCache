@@ -6,6 +6,11 @@ namespace Data.Generic.Cache.Parsers
     {
         public T Parse<T>(string data)
         {
+            if (data == null)
+            {
+                return default(T);
+            }
+
             return JsonConvert.DeserializeObject<T>(data);
         }
 
