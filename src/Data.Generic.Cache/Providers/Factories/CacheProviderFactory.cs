@@ -6,13 +6,6 @@ using Data.Generic.Cache.Settings;
 
 namespace Data.Generic.Cache.Providers.Factories
 {
-    public interface ICacheProviderFactory
-    {
-        ICacheProvider Create();
-
-        int GetTotalAvailableProviders();
-    }
-
     internal class CacheProviderFactory : ICacheProviderFactory
     {
         private readonly ICacheProvider _localMemoryProvider;
@@ -76,7 +69,9 @@ namespace Data.Generic.Cache.Providers.Factories
                     else
                     {
                         if (!cacheProvider.IsWorking())
+                        { 
                             continue;
+                        }
 
                         var activeProviderCacheInMinutes = _providerSettingsConfig.GetActiveProviderCacheInMinutes();
                         _localMemoryProvider.Add(testContentKeyName, cacheProvider, TimeSpan.FromMinutes(activeProviderCacheInMinutes));

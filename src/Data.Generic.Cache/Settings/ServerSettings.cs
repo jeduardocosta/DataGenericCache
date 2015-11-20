@@ -2,9 +2,9 @@
 {
     public class ServerSettings
     {
-        public string Address { get; private set; }
-        public int Port { get; private set; }
-        public string Password { get; private set; }
+        public string Address { get; }
+        public int Port { get; }
+        public string Password { get; }
 
         public ServerSettings(string address, int port, string password)
         {
@@ -30,9 +30,9 @@
         {
             unchecked
             {
-                var hashCode = (Address != null ? Address.GetHashCode() : 0);
+                var hashCode = Address?.GetHashCode() ?? 0;
                 hashCode = (hashCode*397) ^ Port;
-                hashCode = (hashCode*397) ^ (Password != null ? Password.GetHashCode() : 0);
+                hashCode = (hashCode*397) ^ (Password?.GetHashCode() ?? 0);
                 return hashCode;
             }
         }

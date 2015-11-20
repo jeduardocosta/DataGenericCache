@@ -1,15 +1,9 @@
 ﻿namespace Data.Generic.Cache.Settings
 {
-    public interface IProviderSettings
-    {
-        ServerSettings ServerSettings { get; }
-        CacheProvider Type { get; }
-    }
-
     public class ProviderSettings : IProviderSettings
     {
-        public ServerSettings ServerSettings { get; private set; }
-        public CacheProvider Type { get; private set; }
+        public ServerSettings ServerSettings { get; }
+        public CacheProvider Type { get; }
 
         public ProviderSettings(ServerSettings serverSettings, CacheProvider type)
         {

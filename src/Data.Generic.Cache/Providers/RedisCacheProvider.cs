@@ -11,10 +11,7 @@ namespace Data.Generic.Cache.Providers
         private static Lazy<ConnectionMultiplexer> _connectionMultiplexer;
         private static readonly object Locker = new object();
 
-        private IDatabase RedisDatabase
-        {
-            get { return Connection.GetDatabase(); }
-        }
+        private IDatabase RedisDatabase => Connection.GetDatabase();
 
         private static ConnectionMultiplexer Connection
         {
@@ -49,7 +46,9 @@ namespace Data.Generic.Cache.Providers
             var configurationOptions = ConfigurationOptions.Parse(connectionString);
 
             if (!string.IsNullOrWhiteSpace(serverSettings.Password))
+            { 
                 configurationOptions.Password = serverSettings.Password;
+            }
 
             return configurationOptions;
         }
@@ -102,7 +101,7 @@ namespace Data.Generic.Cache.Providers
 
         private string GetConnectionString(ServerSettings serverSettings)
         {
-            return string.Format("{0}:{1}", serverSettings.Address, serverSettings.Port);
+            return $"{serverSettings.Address}:{serverSettings.Port}";
         }
 
         public bool IsWorking()
