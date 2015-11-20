@@ -8,6 +8,7 @@ A simple library to cache data using custom providers.
 Available providers
 ----------
 - Local memory
+- Local storage
 - Redis
 
 Configuration
