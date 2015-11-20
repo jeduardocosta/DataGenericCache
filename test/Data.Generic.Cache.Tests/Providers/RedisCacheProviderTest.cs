@@ -24,7 +24,9 @@ namespace Data.Generic.Cache.Tests.Providers
             _redisCacheProvider = new RedisCacheProvider();
 
             if (redisProviderSettings == null)
+            {
                 throw new Exception("failed to create 'RedisCacheProvider' instance in 'RedisCacheProviderTest'.");
+            }
 
             _redisCacheProvider.SetupConfiguration(redisProviderSettings.ServerSettings);
         }
