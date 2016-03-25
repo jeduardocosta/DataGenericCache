@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>jeduardocosta</authors>
+    <owners>jeduardocosta</owners>
+    <licenseUrl>https://raw.githubusercontent.com/jeduardocosta/data-generic-cache/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/jeduardocosta/data-generic-cache</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>
+      First implementations
+    </releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>data generic cache local memory local storage redis</tags>
+  </metadata>
+</package>

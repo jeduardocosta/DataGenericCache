@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Data.Generic.Cache")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("DataGenericCache")]
+[assembly: AssemblyDescription("A simple .NET library to cache data using custom providers.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Data.Generic.Cache")]
+[assembly: AssemblyProduct("DataGenericCache")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
