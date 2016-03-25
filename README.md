@@ -1,17 +1,23 @@
-# Data Generic Cache
+Data Generic Cache
+=================
 
 [![Build status](https://ci.appveyor.com/api/projects/status/c806rq2m850k5j1v?svg=true)](https://ci.appveyor.com/project/jeduardocosta/data-generic-cache) [![Coverage Status](https://coveralls.io/repos/jeduardocosta/data-generic-cache/badge.svg)](https://coveralls.io/r/jeduardocosta/data-generic-cache)
 
+Project Homepage: https://github.com/jeduardocosta/DataGenericCache
+
+Available on NuGet as well: https://www.nuget.org/packages/DataGenericCache
+
+###Description
 
 A simple .NET library to cache data using custom providers.
 
-Available providers
+###Available providers
 ----------
 - Local memory
 - Local storage
 - Redis
 
-Configuration
+###Configuration
 ----------
 Use custom config section named "dataGenericCacheSection" in configuration file.
 
