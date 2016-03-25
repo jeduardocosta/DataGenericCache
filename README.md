@@ -22,6 +22,10 @@ A simple .NET library to cache data using custom providers.
 Use custom config section named "dataGenericCacheSection" in configuration file.
 
 ```xml
+<configSections>
+	<section name="dataGenericCacheSection" type="DataGenericCache.Settings.ConfigSections.CacheSection, DataGenericCache"/>
+</configSections>
+
 <dataGenericCacheSection>
    <providers>
       <provider type="redis" address="remote-redis" port="6379" password="remote-redis-password" />
@@ -31,3 +35,4 @@ Use custom config section named "dataGenericCacheSection" in configuration file.
    </providers>
    <activeProviderCacheInMinutes value="60" />
 </dataGenericCacheSection>
+```
