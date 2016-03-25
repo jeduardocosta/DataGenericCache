@@ -24,10 +24,10 @@ Use custom config section named "dataGenericCacheSection" in configuration file.
 
 ```xml
 <configSections>
-	<section name="dataGenericCacheSection" type="DataGenericCache.Settings.ConfigSections.CacheSection, DataGenericCache"/>
+	<section name="dataGenericCache" type="DataGenericCache.Settings.ConfigSections.CacheSection, DataGenericCache"/>
 </configSections>
 
-<dataGenericCacheSection>
+<dataGenericCache>
    <providers>
       <provider type="redis" address="remote-redis" port="6379" password="remote-redis-password" />
       <provider type="redis" address="local-redis" port="6379" />
@@ -35,5 +35,5 @@ Use custom config section named "dataGenericCacheSection" in configuration file.
 	  <provider type="localstorage" address="c:\\data" />
    </providers>
    <activeProviderCacheInMinutes value="60" />
-</dataGenericCacheSection>
+</dataGenericCache>
 ```
