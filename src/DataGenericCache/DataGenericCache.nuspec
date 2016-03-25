@@ -15,5 +15,9 @@
     </releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>data generic cache local memory local storage redis</tags>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="6.0.8" />
+      <dependency id="StackExchange.Redis" version="1.0.414" />
+    </dependencies>
   </metadata>
 </package>
