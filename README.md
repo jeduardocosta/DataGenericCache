@@ -2,6 +2,7 @@ Data Generic Cache
 =================
 
 [![Build status](https://ci.appveyor.com/api/projects/status/c806rq2m850k5j1v?svg=true)](https://ci.appveyor.com/project/jeduardocosta/data-generic-cache) [![Coverage Status](https://coveralls.io/repos/jeduardocosta/data-generic-cache/badge.svg)](https://coveralls.io/r/jeduardocosta/data-generic-cache)
+[![Nuget version](https://img.shields.io/nuget/v/DataGenericCache.svg)](https://www.nuget.org/packages/DataGenericCache/)
 
 Project Homepage: https://github.com/jeduardocosta/DataGenericCache
 
