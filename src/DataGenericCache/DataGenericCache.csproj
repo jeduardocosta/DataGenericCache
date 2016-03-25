@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{74A5F163-B2CD-4449-8D4F-8EF878C8DD1D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataGenericCache</RootNamespace>
+    <AssemblyName>DataGenericCache</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Redis">
+      <HintPath>..\..\packages\StackExchange.Redis.1.0.414\lib\net45\StackExchange.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Adapters\ConfigurationAdapter.cs" />
+    <Compile Include="Adapters\FileIoAdapter.cs" />
+    <Compile Include="Adapters\IConfigurationAdapter.cs" />
+    <Compile Include="Adapters\IFileIoAdapter.cs" />
+    <Compile Include="Clock.cs" />
+    <Compile Include="Parsers\IJsonParser.cs" />
+    <Compile Include="Providers\Clients\CacheClient.cs" />
+    <Compile Include="Exceptions\CacheProviderConnectionException.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Providers\Factories\CacheProviderFactory.cs" />
+    <Compile Include="Providers\Factories\CacheProviderInstanceFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Extensions\TypeObjectExtensions.cs" />
+    <Compile Include="Providers\Factories\ICacheProviderFactory.cs" />
+    <Compile Include="Providers\Factories\ICacheProviderInstanceFactory.cs" />
+    <Compile Include="Providers\ICacheProvider.cs" />
+    <Compile Include="Parsers\JsonParser.cs" />
+    <Compile Include="Providers\LocalMemoryCacheProvider.cs" />
+    <Compile Include="Providers\LocalStorageCacheProvider.cs" />
+    <Compile Include="Providers\RedisCacheProvider.cs" />
+    <Compile Include="Settings\CacheProvider.cs" />
+    <Compile Include="Settings\ConfigSections\CacheSection.cs" />
+    <Compile Include="Settings\ConfigSections\CacheSectionActiveProviderCacheInMinutes.cs" />
+    <Compile Include="Settings\ConfigSections\CacheSectionProviderElement.cs" />
+    <Compile Include="Settings\ConfigSections\CacheSectionProviderElementCollection.cs" />
+    <Compile Include="Settings\ConfigSections\CaseInsensitiveEnumConfigConverter.cs" />
+    <Compile Include="Settings\IProviderSettings.cs" />
+    <Compile Include="Settings\IProviderSettingsConfig.cs" />
+    <Compile Include="Settings\ServerSettings.cs" />
+    <Compile Include="Settings\ProviderSettings.cs" />
+    <Compile Include="Settings\ProviderSettingsConfig.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="DataGenericCache.nuspec" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
