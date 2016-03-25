@@ -2,7 +2,7 @@
 
 namespace DataGenericCache.Extensions
 {
-    public static class TypeObjectExtensions
+    internal static class TypeObjectExtensions
     {
         private static readonly JsonParser JsonParser = new JsonParser();
 

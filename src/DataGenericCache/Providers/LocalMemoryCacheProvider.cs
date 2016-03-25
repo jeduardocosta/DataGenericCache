@@ -7,7 +7,7 @@ namespace DataGenericCache.Providers
 {
     internal class LocalMemoryCacheProvider : ICacheProvider
     {
-        private static System.Web.Caching.Cache Cache
+        private static Cache Cache
         {
             get
             {

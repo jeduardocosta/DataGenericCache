@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace DataGenericCache.Settings
 {
-    public interface IProviderSettingsConfig
+    internal interface IProviderSettingsConfig
     {
         IEnumerable<ProviderSettings> GetProviders();
 

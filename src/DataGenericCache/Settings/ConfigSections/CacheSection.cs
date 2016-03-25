@@ -2,7 +2,7 @@
 
 namespace DataGenericCache.Settings.ConfigSections
 {
-    public class CacheSection : ConfigurationSection
+    internal class CacheSection : ConfigurationSection
     {
         [ConfigurationProperty("providers")]
         public CacheSectionProviderElementCollection Providers

@@ -6,7 +6,7 @@ using DataGenericCache.Settings;
 
 namespace DataGenericCache.Providers
 {
-    public class LocalStorageCacheProvider : ICacheProvider
+    internal class LocalStorageCacheProvider : ICacheProvider
     {
         internal string Address { get; private set; }
 

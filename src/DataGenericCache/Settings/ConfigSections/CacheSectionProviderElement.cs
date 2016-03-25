@@ -3,7 +3,7 @@ using System.Configuration;
 
 namespace DataGenericCache.Settings.ConfigSections
 {
-    public class CacheSectionProviderElement : ConfigurationElement
+    internal class CacheSectionProviderElement : ConfigurationElement
     {
         [ConfigurationProperty("type")]
         [TypeConverter(typeof(CaseInsensitiveEnumConfigConverter<CacheProvider>))]

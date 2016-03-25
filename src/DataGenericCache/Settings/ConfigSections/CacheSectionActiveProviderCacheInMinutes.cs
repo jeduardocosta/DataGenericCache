@@ -2,7 +2,7 @@
 
 namespace DataGenericCache.Settings.ConfigSections
 {
-    public class CacheSectionActiveProviderCacheInMinutes : ConfigurationElement
+    internal class CacheSectionActiveProviderCacheInMinutes : ConfigurationElement
     {
         public const int Unlimited = 0;
 

@@ -1,6 +1,6 @@
 ﻿namespace DataGenericCache.Settings
 {
-    public interface IProviderSettings
+    internal interface IProviderSettings
     {
         ServerSettings ServerSettings { get; }
         CacheProvider Type { get; }

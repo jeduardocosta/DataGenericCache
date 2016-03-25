@@ -3,7 +3,7 @@
 namespace DataGenericCache.Exceptions
 {
     [Serializable]
-    internal class CacheProviderConnectionException : Exception
+    public class CacheProviderConnectionException : Exception
     {
         public CacheProviderConnectionException() { }
 

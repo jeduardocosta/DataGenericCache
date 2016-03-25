@@ -1,6 +1,6 @@
 namespace DataGenericCache.Adapters
 {
-    public interface IFileIoAdapter
+    internal interface IFileIoAdapter
     {
         void Add(string path, string key, string value);
         void Remove(string path);

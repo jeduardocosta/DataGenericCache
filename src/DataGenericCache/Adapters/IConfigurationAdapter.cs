@@ -1,6 +1,6 @@
 ﻿namespace DataGenericCache.Adapters
 {
-    public interface IConfigurationAdapter
+    internal interface IConfigurationAdapter
     {
         string Get(string keyName);
 

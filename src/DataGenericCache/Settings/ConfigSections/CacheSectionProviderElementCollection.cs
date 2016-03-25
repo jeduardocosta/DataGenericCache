@@ -4,7 +4,7 @@ using System.Configuration;
 namespace DataGenericCache.Settings.ConfigSections
 {
     [ConfigurationCollection(typeof(CacheSectionProviderElement))]
-    public class CacheSectionProviderElementCollection : ConfigurationElementCollection
+    internal class CacheSectionProviderElementCollection : ConfigurationElementCollection
     {
         internal const string PropertyName = "provider";
 

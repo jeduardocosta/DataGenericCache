@@ -2,7 +2,7 @@
 
 namespace DataGenericCache.Extensions
 {
-    public static class EnumExtensions
+    internal static class EnumExtensions
     {
         public static string GetName(this Enum enumObject)
         {

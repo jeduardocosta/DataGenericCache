@@ -2,7 +2,7 @@
 
 namespace DataGenericCache.Providers.Factories
 {
-    public interface ICacheProviderInstanceFactory
+    internal interface ICacheProviderInstanceFactory
     {
         ICacheProvider Create(CacheProvider cacheProviderType, ServerSettings serverSettings);
     }

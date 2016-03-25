@@ -2,7 +2,7 @@
 
 namespace DataGenericCache.Adapters
 {
-    public class FileIoAdapter : IFileIoAdapter
+    internal class FileIoAdapter : IFileIoAdapter
     {
         public void Add(string path, string key, string value)
         {

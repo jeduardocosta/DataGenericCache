@@ -1,6 +1,6 @@
 ﻿namespace DataGenericCache.Providers.Factories
 {
-    public interface ICacheProviderFactory
+    internal interface ICacheProviderFactory
     {
         ICacheProvider Create();
 

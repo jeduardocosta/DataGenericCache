@@ -2,7 +2,7 @@
 
 namespace DataGenericCache
 {
-    public static class Clock
+    internal static class Clock
     {
         public static Func<DateTime> Now = () => DateTime.Now;
 

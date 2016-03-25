@@ -5,7 +5,7 @@ using System.Globalization;
 
 namespace DataGenericCache.Settings.ConfigSections
 {
-    public class CaseInsensitiveEnumConfigConverter<T> : ConfigurationConverterBase
+    internal class CaseInsensitiveEnumConfigConverter<T> : ConfigurationConverterBase
     {
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo cultureInfo, object data)
         {

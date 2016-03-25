@@ -3,7 +3,7 @@ using System.IO;
 
 namespace DataGenericCache.Extensions
 {
-    public static class StringExtensions
+    internal static class StringExtensions
     {
         public static T ParseToEnum<T>(this string value)
         {
