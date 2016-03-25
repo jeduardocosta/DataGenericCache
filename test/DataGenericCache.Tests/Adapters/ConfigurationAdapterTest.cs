@@ -31,7 +31,7 @@ namespace DataGenericCache.Tests.Adapters
         public void Should_ConvertDataGenericCacheSection_FromConfigurationFile()
         {
             _configurationAdapter
-                .GetSections<object>("dataGenericCacheSection")
+                .GetSections<object>("dataGenericCache")
                 .Should()
                 .NotBeNull();
         }
@@ -40,7 +40,7 @@ namespace DataGenericCache.Tests.Adapters
         public void Should_ConvertDataGenericCacheSection_AndCastToEntryType_FromConfigurationFile()
         {
             _configurationAdapter
-                .GetSections<CacheSection>("dataGenericCacheSection")
+                .GetSections<CacheSection>("dataGenericCache")
                 .Should()
                 .BeOfType<CacheSection>();
         }

@@ -7,7 +7,7 @@ namespace DataGenericCache.Settings
 {
     internal class ProviderSettingsConfig : IProviderSettingsConfig
     {
-        private const string KeyName = "dataGenericCacheSection";
+        private const string KeyName = "dataGenericCache";
 
         private readonly IConfigurationAdapter _configurationAdapter;
 
