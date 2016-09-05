@@ -83,6 +83,7 @@
     <Compile Include="Extensions\EnumExtensionsTest.cs" />
     <Compile Include="Extensions\StringExtensionsTest.cs" />
     <Compile Include="Extensions\TypeObjectExtensionsTest.cs" />
+    <Compile Include="Providers\Entities\MemoryDataTest.cs" />
     <Compile Include="Providers\Factories\CacheProviderFactoryIntegrationTest.cs" />
     <Compile Include="Providers\Factories\CacheProviderFactoryTest.cs" />
     <Compile Include="Providers\Factories\CacheProviderInstanceFactoryTest.cs" />
