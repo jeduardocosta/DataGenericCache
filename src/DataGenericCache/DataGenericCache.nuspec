@@ -11,7 +11,7 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>
-      2016-05-09 - updated LocalMemory provider implementation
+      2016-09-05 - updated LocalMemory provider implementation
     </releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>data generic cache local memory local storage redis</tags>
