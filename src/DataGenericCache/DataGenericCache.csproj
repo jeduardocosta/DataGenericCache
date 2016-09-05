@@ -48,12 +48,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapters\ConfigurationAdapter.cs" />
@@ -66,6 +63,7 @@
     <Compile Include="Exceptions\CacheProviderConnectionException.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Providers\Entities\MemoryData.cs" />
     <Compile Include="Providers\Factories\CacheProviderFactory.cs" />
     <Compile Include="Providers\Factories\CacheProviderInstanceFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
